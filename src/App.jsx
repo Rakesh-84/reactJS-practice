@@ -1,3 +1,4 @@
+import SearchBox from "./component/SearchBox"
 import StatCard from "./component/statCard"
 function App() {
 
@@ -5,7 +6,7 @@ function App() {
    
     <>
      <StatCard />
-
+      <SearchBox />
     </>
   )
 }
