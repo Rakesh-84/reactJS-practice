@@ -6,18 +6,16 @@ function SearchBox() {
  const [searchTerm, setSearchTerm] = useState('')
  function handleChange(e) {
     setSearchTerm(e.target.value)
-
-
  }
 
-
+const filteredText = text.split(' ').filter(word => word.toLowerCase().includes(searchTerm.toLowerCase())).join(' ');
 
   return (
     <>
 <div className=' border-2 border-fuchsia-800 h-12 w-152'>
       <form action="">
         <input onChange={handleChange} type="text" placeholder="Search..." style={{ width: "560px" , height: "42px" }}/>
-       { searchTerm && text.includes(searchTerm) && <p>{text}</p> }
+       { searchTerm && <p>{filteredText}</p> }
       </form>
   </div>
  
