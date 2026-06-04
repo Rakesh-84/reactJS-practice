@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function Carousel({ items, autoSlide = true, autoSlideInterval = 4000 }) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [showDetails, setShowDetails] = useState(true);
 
   // Auto-slide effect
   useEffect(() => {
@@ -50,30 +51,42 @@ export default function Carousel({ items, autoSlide = true, autoSlideInterval = 
                 <h2 className="text-4xl font-bold text-indigo-600 mb-4">{item.product}</h2>
                 <p className="text-xl text-gray-700 mb-4">{item.category}</p>
                 
-                {/* Item Details */}
-                <div className="grid grid-cols-3 gap-8 mt-6">
-                  <div className="text-center">
-                    <p className="text-sm text-gray-600">Price</p>
-                    <p className="text-2xl font-bold text-green-600">${item.unitPrice}</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-sm text-gray-600">Quantity</p>
-                    <p className="text-2xl font-bold text-blue-600">{item.quantity}</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-sm text-gray-600">Revenue</p>
-                    <p className="text-2xl font-bold text-purple-600">${item.revenue}</p>
-                  </div>
-                </div>
+                {/* Toggle Button */}
+                <button
+                  onClick={() => setShowDetails(!showDetails)}
+                  className="mb-6 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-colors duration-300"
+                >
+                  {showDetails ? 'Hide Details' : 'Show Details'}
+                </button>
 
-                {/* Seller & Region */}
-                <div className="mt-6 flex gap-8 text-gray-700">
-                  <span><strong>Rep:</strong> {item.rep}</span>
-                  <span><strong>Region:</strong> {item.region}</span>
-                  <span className="px-3 py-1 bg-indigo-100 rounded-full">
-                    {item.status}
-                  </span>
-                </div>
+                {/* Item Details - Conditionally Rendered */}
+                {showDetails && (
+                  <>
+                    <div className="grid grid-cols-3 gap-8 mt-6 animate-fadeIn">
+                      <div className="text-center">
+                        <p className="text-sm text-gray-600">Price</p>
+                        <p className="text-2xl font-bold text-green-600">${item.unitPrice}</p>
+                      </div>
+                      <div className="text-center">
+                        <p className="text-sm text-gray-600">Quantity</p>
+                        <p className="text-2xl font-bold text-blue-600">{item.quantity}</p>
+                      </div>
+                      <div className="text-center">
+                        <p className="text-sm text-gray-600">Revenue</p>
+                        <p className="text-2xl font-bold text-purple-600">${item.revenue}</p>
+                      </div>
+                    </div>
+
+                    {/* Seller & Region */}
+                    <div className="mt-6 flex gap-8 text-gray-700">
+                      <span><strong>Rep:</strong> {item.rep}</span>
+                      <span><strong>Region:</strong> {item.region}</span>
+                      <span className="px-3 py-1 bg-indigo-100 rounded-full">
+                        {item.status}
+                      </span>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           ))}
