@@ -1,31 +1,43 @@
-import { useState } from "react";
-import SearchBox from "./component/SearchBox";
-import StatCard from "./component/statCard";
+import Carousel from './component/Carousel';
+import { orders } from './Data/data';
 
 function App() {
-  const [showSearch, setShowSearch] = useState(true);
-
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <StatCard />
+    <div className="min-h-screen bg-gray-100 p-8">
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-5xl font-bold text-gray-800 mb-4 text-center">
+          Product Carousel
+        </h1>
+        <p className="text-lg text-gray-600 text-center mb-12">
+          Slide through our sales data and explore products, pricing, and more
+        </p>
+        
+        <Carousel 
+          items={orders} 
+          autoSlide={true} 
+          autoSlideInterval={4000}
+        />
 
-      <button
-        type="button"
-        onClick={() => setShowSearch((visible) => !visible)}
-        style={{
-          margin: "16px 0",
-          padding: "10px 16px",
-          borderRadius: "6px",
-          border: "1px solid #444",
-          background: showSearch ? "#f5f5f5" : "#007bff",
-          color: showSearch ? "#000" : "#fff",
-          cursor: "pointer",
-        }}
-      >
-        {showSearch ? "Hide Search Box" : "Show Search Box"}
-      </button>
-
-      {showSearch && <SearchBox />}
+        {/* Summary Section */}
+        <div className="mt-16 grid grid-cols-3 gap-6">
+          <div className="bg-white rounded-lg shadow p-6">
+            <h3 className="text-gray-600 text-sm font-semibold">Total Products</h3>
+            <p className="text-4xl font-bold text-indigo-600">{orders.length}</p>
+          </div>
+          <div className="bg-white rounded-lg shadow p-6">
+            <h3 className="text-gray-600 text-sm font-semibold">Total Revenue</h3>
+            <p className="text-4xl font-bold text-green-600">
+              ${orders.reduce((sum, order) => sum + order.revenue, 0).toLocaleString()}
+            </p>
+          </div>
+          <div className="bg-white rounded-lg shadow p-6">
+            <h3 className="text-gray-600 text-sm font-semibold">Categories</h3>
+            <p className="text-4xl font-bold text-purple-600">
+              {new Set(orders.map(o => o.category)).size}
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
