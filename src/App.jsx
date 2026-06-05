@@ -30,12 +30,7 @@ function App() {
               ${orders.reduce((sum, order) => sum + order.revenue, 0).toLocaleString()}
             </p>
           </div>
-          <div className="bg-white rounded-lg shadow p-6">
-            <h3 className="text-gray-600 text-sm font-semibold">Categories</h3>
-            <p className="text-4xl font-bold text-purple-600">
-              {new Set(orders.map(o => o.category)).size}
-            </p>
-          </div>
+          
         </div>
       </div>
     </div>
