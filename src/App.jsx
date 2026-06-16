@@ -26,9 +26,7 @@ function App() {
           </div>
           <div className="bg-white rounded-lg shadow p-6">
             <h3 className="text-gray-600 text-sm font-semibold">Total Revenue</h3>
-            <p className="text-4xl font-bold text-green-600">
-              ${orders.reduce((sum, order) => sum + order.revenue, 0).toLocaleString()}
-            </p>
+          
           </div>
           
         </div>
