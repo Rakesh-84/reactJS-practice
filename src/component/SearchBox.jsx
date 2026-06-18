@@ -9,8 +9,7 @@ function SearchBox() {
     return (
       order.product.toLowerCase().includes(lowerQuery) ||
       order.category.toLowerCase().includes(lowerQuery) ||
-      order.rep.toLowerCase().includes(lowerQuery) ||
-      order.country.toLowerCase().includes(lowerQuery)
+      
     );
   });
 
