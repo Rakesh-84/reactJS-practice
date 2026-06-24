@@ -12,17 +12,17 @@ notes: z.string().optional()
 type createProjectInput = z.infer <typeof projectSchema >
 
 
-export class createProjectDto ={
-title: string [];
-status: string[];
-memberID: string[];
+export class createProjectDto {
+title: string ;
+status: "planning" | "active";
+memberIDs: string[];
 notes? :string[];
 
 constructor (data: createProjectInput){
 
 this.title= data.title;
  this.status= data.status;
-  this.memberIDs= data.memberIDs ;
+  this.memberIds= data.memberIds ;
   this.notes= data.notes;
 
 
