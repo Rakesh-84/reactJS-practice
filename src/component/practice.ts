@@ -12,13 +12,13 @@ plan:z.enum(["free","basic","premium"])
 
 type CreateClientSchema = z.infer<typeof createClientSchema>
 
-export class createClientDto={
-name:string,
-email:string,
-website:string,
+export class createClientDto {
+name:string;
+email:string;
+website:string;
 plan:"free" | "basic" | "premium"
 
-}
+
 constructor (input :createClientInput){
 this.name= input.name;
 this.email= input.email;
@@ -26,4 +26,4 @@ this.website= input.website;
 this.plan= input.plan;
 
 
-}
+}}
