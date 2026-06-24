@@ -1,29 +1,41 @@
-import {z } from "zod";
+import {z} from "zod";
 
-export const createClientSchema = z.object ({
-name: z.string().min (2),
-email: z.string().email("valid email"),
-website:z.string().url("valid url"),
-plan:z.enum(["free","basic","premium"])
-
+export const projectSchema = z.object({
+title : z.string.min(3),
+status : z.string.min(3),
+memberID :z.number.uuid(),
+notes: z.string.optional()
 
 
 })
 
-type CreateClientSchema = z.infer<typeof createClientSchema>
-
-export class createClientDto {
-name:string;
-email:string;
-website:string;
-plan:"free" | "basic" | "premium"
+type createProjectInput = z.infer <typeof projectSchema >
 
 
-constructor (input :createClientInput){
-this.name= input.name;
-this.email= input.email;
-this.website= input.website;
-this.plan= input.plan;
+export class createProjectDto ={
+title: string;
+status: string;
+memberID: string;
+notes? :string;
+
+constructor (data: createProjectInput){
+
+this.title= data.title;
+ this.status= data.status;
+  this.memberIDn= data.memberID ;
+  this.notes= data.notes;
 
 
-}}
+
+
+
+
+
+
+}
+
+
+
+
+
+}
