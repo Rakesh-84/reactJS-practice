@@ -17,7 +17,7 @@ function validateInput<T>(schema: z.ZodSchema<T>, rawInput: unknown): T {
                 messege:string {}
             }))
         },
-        HttpStatus.BAD_REQUEST
+
 
 
 
