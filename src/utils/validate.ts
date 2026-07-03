@@ -13,8 +13,7 @@ function validateInput<T>(schema: z.ZodSchema<T>, rawInput: unknown): T {
             statusCode: 400,
             message: "Validation failed",
             errors: result.ZodError.errors.map((err) => ({
-                field: string,
-                messege:string {}
+              
             }))
         },
 
