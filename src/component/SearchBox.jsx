@@ -25,7 +25,7 @@ function SearchBox() {
       }}
     >
       <h2>Search Orders</h2>
-      <p>Type a product, category, rep or country to filter the list.</p>
+
       <input
         type="text"
         value={query}
@@ -63,7 +63,7 @@ function SearchBox() {
           </ul>
           {filteredOrders.length > 10 && (
             <p style={{ marginTop: "12px", color: "#555" }}>
-              Showing first 10 results.
+      
             </p>
           )}
         </div>
